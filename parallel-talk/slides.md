@@ -3,26 +3,34 @@
 % author: Wesley Brooks
 % author: somesquares.org
 % thankyou: Thanks everyone!
-<!---% thankyou_details: And especially these people:
-% contact: <span>website</span> <a href="http://somesquares.org/blog/">website</a>
-% contact: <span>github</span> <a href="http://github.com/wesesque">wesesque</a>
-% contact: <span>twitter</span> <a href="http://twitter.com/buckyphilia">@buckyphilia</a>--->
+<!---% thankyou_details: And especially these people:--->
+<!---% contact: <span>website</span> <a href="http://somesquares.org/blog/">website</a>--->
+<!---% contact: <span>github</span> <a href="http://github.com/wesesque">wesesque</a>--->
+<!---% contact: <span>twitter</span> <a href="http://twitter.com/buckyphilia">@buckyphilia</a>--->
 % favicon: http://www.stat.wisc.edu/sites/all/libraries/uw_madison_omega/favicon.ico
 
 
 
-
 ---
-title: Intro slide
+title: Parallelize your problem
 build_lists: true
 
-Here is a list that should build:
+Requirements: 
 
-- I like formulas, like this one $e=mc^2$
-- It's rendered using MathJax. You can change the settings by editing base.html if you like
-- pressing 'f' toggle fullscreen
-- pressing 'w' toggles widescreen
-- 'o' toggles overview mode
+- Independent processing chunks
+- Independent data chunks
+
+
+
+---
+title: Parallelize your code
+build_lists: true
+
+Steps: 
+
+- Break the code into independent pieces
+- Send each piece to a processor
+- Compile the results
 
 
 
