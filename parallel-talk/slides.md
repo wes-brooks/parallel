@@ -54,7 +54,7 @@ class: img-top-center
 ---
 title: Segue slide
 subtitle: I can haz subtitlz?
-class: segue dark nobackground
+class: segue nobackground
 
 
 
