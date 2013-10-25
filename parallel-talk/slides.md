@@ -205,3 +205,18 @@ else
 fi
 </pre>
 
+
+
+
+---
+title: More powerful parallelization
+subtitle: Submitting to condor
+build_lists: false
+
+The condor binaries are in `/unsup/condor/bin`
+
+- Submit the example: `/unsup/condor/bin/condor_submit condor/simulation.condor`
+- Check your queue: `/unsup/condor/bin/condor_q`
+- Check the grid's status: `/unsup/condor/bin/condor_status`
+- Cancel a job: `/unsup/condor/bin/condor_rm 21`
+
