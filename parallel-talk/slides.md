@@ -78,15 +78,15 @@ Modern computers typically have from two to eight processing cores, of which bas
 One way to make use of your spare computing power:
 
 - Get packages foreach and doMC
-- Minimal effort for making for loops parallel.
+- Minimal effort for making for loops parallel
+- Code at github.com/wesesque/parallel/code/foreach.r
+
 
 
 
 ---
 title: Quick and dirty
 subtitle: Multicore parallelization
-
-This code is at github.com/wesesque/parallel/code/foreach.r
 
 <pre class="prettyprint" data-lang="R">
 #Load the libraries
