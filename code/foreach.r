@@ -1,0 +1,20 @@
+#Load the libraries
+library(foreach)
+library(doMC)
+
+#Register the number of cores to devote to parallel computation:
+registerDoMC()
+registerCores(n=3)
+
+#Simulate our "data"
+y = rnorm(100)
+
+#Compute the bootstrap distribution via parallel computation:
+boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
+    z = sample(y, replace=TRUE)
+    mu = mean(z)
+    return(mu)
+}
+
+#Extract the results from the list to a vector:
+boots = sapply(boot, function(x) x[[1]])

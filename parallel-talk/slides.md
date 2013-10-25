@@ -10,11 +10,24 @@
 % favicon: http://www.stat.wisc.edu/sites/all/libraries/uw_madison_omega/favicon.ico
 
 ---
+title: Introduction
+subtitle: Overview of parallelization in R
+class: segue dark nobackground
+
+
+
+---
+title: What is parallel computing?
+
+Run parts of your code on many different processors simultaneously. Often loops are prime candidates for parallelization.
+
+
+
+---
 title: Parallelize your problem
 build_lists: true
-class: 
 
-Requirements: 
+Required for parallelization: 
 
 - Independent processing chunks
 - Independent data chunks
@@ -24,31 +37,80 @@ Requirements:
 ---
 title: Parallelize your code
 build_lists: true
-class: 
 
-Steps: 
+How to do parallelization:
 
 - Break the code into independent pieces
 - Send each piece to a processor
+- Run each piece
 - Compile the results
+
+Your gains from parallelization will depend on how difficult each step is (for the programmer and the computer).
+
+
+
+---
+title: Parallelize your code
+build_lists: true
+
+Your gains from parallelization will depend on how difficult each step is (for the programmer and the computer).
+
+- Low effort for modest gain: multicore parallelization
+- High effort for massive gain: distributed parallelization
+
+
+
+---
+title: Quick and dirty parallelization
+subtitle: Multicore parallelization
+class: segue dark nobackground
+
 
 
 
 
 ---
-title: Slide with a figure
-subtitle: Subtitles are cool too
-class: img-top-center
+title: Quick and dirty
+subtitle: Multicore parallelization
 
-<img height=150 src=figures/200px-6n-graf.svg.png />
+Modern computers typically have from two to eight processing cores, of which basic R uses only one.
 
-- Some point to make about about this figure from wikipedia
-- This slide has a class that was defined in theme/css/custom.css
+One way to make use of your spare computing power:
 
-<footer class="source"> Always cite your sources! </footer>
-
+- Get packages foreach and doMC
+- Minimal effort for making for loops parallel.
 
 
+
+---
+title: Quick and dirty
+subtitle: Multicore parallelization
+
+This code is at github.com/wesesque/parallel/code/foreach.r
+
+<pre class="prettyprint" data-lang="R">
+#Load the libraries
+library(foreach)
+library(doMC)
+
+#Register the number of cores to devote to parallel computation:
+registerDoMC()
+registerCores(n=3)
+
+#Simulate our "data"
+y = rnorm(100)
+
+#Compute the bootstrap distribution via parallel computation:
+boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
+    z = sample(y, replace=TRUE)
+    mu = mean(z)
+    return(mu)
+}
+
+#Extract the results from the list to a vector:
+boots = sapply(boot, function(x) x[[1]])
+
+</pre>
 
 
 ---
