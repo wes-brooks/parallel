@@ -19,7 +19,9 @@ class: segue dark nobackground
 ---
 title: What is parallel computing?
 
-Run parts of your code on many different processors simultaneously. Often loops are prime candidates for parallelization.
+Run parts of your code on many different processors simultaneously.
+
+Often loops are prime candidates for parallelization.
 
 
 
@@ -44,8 +46,7 @@ How to do parallelization:
 - Send each piece to a processor
 - Run each piece
 - Compile the results
-
-Your gains from parallelization will depend on how difficult each step is (for the programmer and the computer).
+- Your gains from parallelization will depend on how difficult each step is (for the programmer and the computer).
 
 
 
@@ -77,8 +78,8 @@ Modern computers typically have from two to eight processing cores, of which bas
 
 One way to make use of your spare computing power:
 
-- Get packages foreach and doMC
-- Minimal effort for making for loops parallel
+- Get R packages 'foreach' and 'doMC'
+- Minimal effort to parallelize for loops
 - Code at github.com/wesesque/parallel/code/foreach.r
 
 
@@ -89,7 +90,6 @@ title: Quick and dirty
 subtitle: Multicore parallelization
 
 <pre class="prettyprint" data-lang="R">
-#Load the libraries
 library(foreach)
 library(doMC)
 
@@ -97,19 +97,16 @@ library(doMC)
 registerDoMC()
 registerCores(n=3)
 
-#Simulate our "data"
 y = rnorm(100)
 
 #Compute the bootstrap distribution via parallel computation:
 boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
     z = sample(y, replace=TRUE)
-    mu = mean(z)
-    return(mu)
+    return(mean(z))
 }
 
 #Extract the results from the list to a vector:
 boots = sapply(boot, function(x) x[[1]])
-
 </pre>
 
 

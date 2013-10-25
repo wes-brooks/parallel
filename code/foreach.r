@@ -9,7 +9,7 @@ registerCores(n=3)
 #Simulate our "data"
 y = rnorm(100)
 
-#Compute the bootstrap distribution via parallel computation:
+#Compute the bootstrap distribution via parallel for loop:
 boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
     z = sample(y, replace=TRUE)
     mu = mean(z)
