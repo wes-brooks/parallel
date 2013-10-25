@@ -159,7 +159,7 @@ build_lists: false
 You must create these files, which call each other in this order:
 
 - A condor submit file
-- A shell script
+- A worker shell script
 - Your R script
 
 See `github.com/wesesque/parallel/condor` and `github.com/wesesque/parallel/code/condor.r`
@@ -187,3 +187,21 @@ notification = Never
 on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)
 queue 40
 </pre>
+
+
+---
+title: More powerful parallelization
+subtitle: Example worker shell script
+build_lists: false
+
+<pre class="prettyprint" data-lang="bash">
+if [ -f /usr/bin/R ]
+then
+	mkdir output
+    Rscript code/condor.r $*
+	exit 0
+else 
+    exit 1
+fi
+</pre>
+
