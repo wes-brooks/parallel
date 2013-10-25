@@ -207,7 +207,7 @@ fi
 
 
 ---
-title: Example R script
+title: Example R script (1/2)
 
 <pre class="prettyprint" data-lang="bash">
 #Load the command line arguments:
@@ -225,7 +225,14 @@ params = data.frame(mu, sigma)
 N = 10 #Ten repetitions per setting
 setting = process %/% N + 1
 parameters = params[setting,]
+</pre>
 
+
+
+---
+title: Example R script (2/2)
+
+<pre class="prettyprint" data-lang="bash">
 #Seed the RNG
 seeds = as.vector(read.csv("seeds.csv", header=FALSE)[,1])
 set.seed(seeds[process+1])
