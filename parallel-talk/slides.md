@@ -14,6 +14,7 @@
 ---
 title: Parallelize your problem
 build_lists: true
+class: dark
 
 Requirements: 
 
@@ -25,6 +26,7 @@ Requirements:
 ---
 title: Parallelize your code
 build_lists: true
+class: dark
 
 Steps: 
 
