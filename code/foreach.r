@@ -3,8 +3,7 @@ library(foreach)
 library(doMC)
 
 #Register the number of cores to devote to parallel computation:
-registerDoMC()
-registerCores(n=3)
+registerDoMC(n=3)
 
 #Simulate our data
 y = rnorm(100)
