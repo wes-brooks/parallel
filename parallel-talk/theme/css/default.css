@@ -303,6 +303,7 @@ slides > slide.far-next {
 /* line 160, ../scss/default.scss */
 slides > slide.dark {
   background: #515151 !important;
+  color: #e6e6e6;
 }
 
 
