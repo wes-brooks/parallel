@@ -27,7 +27,7 @@ Here is a list that should build:
 ---
 title: Slide with a figure
 subtitle: Subtitles are cool too
-class: img-top-center
+class: img-top-center dark
 
 <img height=150 src=figures/200px-6n-graf.svg.png />
 
@@ -52,6 +52,7 @@ class: segue dark nobackground
 
 ---
 title: Maybe some code?
+class: dark
 
 press 'h' to highlight an important section (that is highlighted
 with &lt;b&gt;...&lt;/b&gt; tags)
