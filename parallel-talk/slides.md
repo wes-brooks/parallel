@@ -100,7 +100,7 @@ registerCores(n=3)
 y = rnorm(100)
 
 #Compute the bootstrap distribution via parallel computation:
-boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
+boot = foreach(i=1:200, .packages=c('lars'), .errorhandling='remove') %dopar% {
     z = sample(y, replace=TRUE)
     return(mean(z))
 }
@@ -134,6 +134,17 @@ Condor is a distributed computing platform that was developed by the UW-Madison 
 - There is a combined stat/CS grid accessible via the `desk` servers (R on _some_ of these)
 
 
+---
+title: More powerful parallelization
+subtitle: A pitfall!
+build_lists: true
+
+- _You_ need to make sure that each compute node has a working version of R
+- _You_ need to send any necessary R packages to the compute node.
+- My shorthand: any computer with "stat" in the name probably has R
+- Also, I test for R's presence when the job starts.
+- Theoretically, one could send R as _part_ of the job, but on Linux R links to system libraries in places like `/usr/bin`
+
 
 ---
 title: More powerful parallelization
@@ -147,7 +158,7 @@ Remember the list of "steps":
 - Run each piece
 - Compile the results into a single data structure
 
-Condor only does steps two and three, but you can use dozens or hundreds of processors at once
+Condor only does steps two and three, but you can use dozens or hundreds of processors at once.
 
 
 

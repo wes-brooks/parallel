@@ -6,14 +6,13 @@ library(doMC)
 registerDoMC()
 registerCores(n=3)
 
-#Simulate our "data"
+#Simulate our data
 y = rnorm(100)
 
 #Compute the bootstrap distribution via parallel for loop:
-boot = foreach(i=1:200, .packages=c(), .errorhandling='remove') %dopar% {
+boot = foreach(i=1:200, .packages=c('lars'), .errorhandling='remove') %dopar% {
     z = sample(y, replace=TRUE)
-    mu = mean(z)
-    return(mu)
+    return(mean(z))
 }
 
 #Extract the results from the list to a vector:
