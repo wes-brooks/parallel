@@ -9,8 +9,6 @@
 <!---% contact: <span>twitter</span> <a href="http://twitter.com/buckyphilia">@buckyphilia</a>--->
 % favicon: http://www.stat.wisc.edu/sites/all/libraries/uw_madison_omega/favicon.ico
 
-
-
 ---
 title: Parallelize your problem
 build_lists: true
@@ -42,7 +40,7 @@ title: Slide with a figure
 subtitle: Subtitles are cool too
 class: img-top-center
 
-![test](figures/200px-6n-graf.svg.png)
+<img height=150 src=figures/200px-6n-graf.svg.png />
 
 - Some point to make about about this figure from wikipedia
 - This slide has a class that was defined in theme/css/custom.css
