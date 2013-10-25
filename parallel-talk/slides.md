@@ -45,7 +45,7 @@ How to do parallelization:
 - Break the code into independent pieces
 - Send each piece to a processor
 - Run each piece
-- Compile the results
+- Compile the results into a single data structure
 - Your gains from parallelization will depend on how difficult each step is (for the programmer and the computer).
 
 
@@ -78,7 +78,7 @@ Modern computers typically have from two to eight processing cores, of which bas
 
 One way to make use of your spare computing power:
 
-- Get R packages 'foreach' and 'doMC'
+- Get R packages `foreach` and `doMC`
 - Minimal effort to parallelize for loops
 - Code at github.com/wesesque/parallel/code/foreach.r
 
@@ -130,7 +130,60 @@ build_lists: true
 Condor is a distributed computing platform that was developed by the UW-Madison CS department.
 
 - Sends your job to run on any idle processor within a grid
-- Center for High Throughput Computing (CHTC) manages a campus-wide grid
-- There is a combined stat/CS grid accessible via the `desk` servers.
+- Center for High Throughput Computing (CHTC) manages a campus-wide grid (no R on these machines)
+- There is a combined stat/CS grid accessible via the `desk` servers (R on _some_ of these)
 
 
+
+---
+title: More powerful parallelization
+subtitle: How does one use condor?
+build_lists: false
+
+Remember the list of "steps":
+
+- Break the code into independent pieces
+- Send each piece to a processor
+- Run each piece
+- Compile the results into a single data structure
+
+Condor only does steps two and three, but you can use dozens or hundreds of processors at once
+
+
+
+---
+title: More powerful parallelization
+subtitle: Pieces of a condor job
+build_lists: false
+
+You must create these files, which call each other in this order:
+
+- A condor submit file
+- A shell script
+- Your R script
+
+See `github.com/wesesque/parallel/condor` and `github.com/wesesque/parallel/code/condor.r`
+
+
+
+---
+title: More powerful parallelization
+subtitle: Example submit file
+build_lists: false
+
+<pre class="prettyprint" data-lang="condor">
+universe = vanilla
+log = logs/log_$(Cluster)_$(Process).log
+error = logs/err_$(Cluster)_$(Process).err
+output = logs/out_$(Cluster)_$(Process).out
+executable = condor/worker.sh
+arguments = $(Cluster) $(Process)
+requirements = (Target.OpSys=="LINUX" && Target.Arch=="X86_64"  && regexp("stat", Machine))
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_input_files = code, R-libs, condor, seeds.csv
+transfer_output_files = output
+notification = Never
+on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)
+queue 40
+</pre>
