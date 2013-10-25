@@ -21,6 +21,9 @@ Here is a list that should build:
 - pressing 'w' toggles widescreen
 - 'o' toggles overview mode
 
+
+
+
 ---
 title: Slide with a figure
 subtitle: Subtitles are cool too
@@ -34,10 +37,18 @@ class: img-top-center
 <footer class="source"> Always cite your sources! </footer>
 
 
+
+
+
 ---
 title: Segue slide
 subtitle: I can haz subtitlz?
 class: segue dark nobackground
+
+
+
+
+
 
 ---
 title: Maybe some code?
@@ -45,21 +56,24 @@ title: Maybe some code?
 press 'h' to highlight an important section (that is highlighted
 with &lt;b&gt;...&lt;/b&gt; tags)
 
-<pre class="prettyprint" data-lang="javascript">
-function isSmall() {
-  return window.matchMedia("(min-device-width: ???)").matches;
+<pre class="prettyprint" data-lang="R">
+models = foreach(i=1:n, .packages=c('glmnet'), .errorhandling='remove') %dopar% {
+    #Fit one location's model here
+    loc = coords.unique[i,]
+    gw = gweights[[i]]
+
+            if (is.null(oracle)) {
+            m = gwglmnet.fit.inner(x=x, y=y, family=family, bw=bw, coords=coords, loc=loc, s=s, verbose=verbose, mode.select=mode.select, gwr.weights=gw, prior.weights=prior.weights, gweight=gweight, adapt=adapt, precondition=precondition, predict=predict, tuning=tuning, simulation=simulation, alpha=alpha, interact=interact, N=N, shrunk.fit=shrunk.fit, AICc=AICc)
+            } else {
+        m = gwselect.fit.oracle(x=x, y=y, family=family, bw=bw, coords=coords, loc=loc, indx=indx, oracle=oracle[[i]], N=N, mode.select=mode.select, tuning=tuning, predict=predict, simulation=simulation, verbose=verbose, gwr.weights=gw, prior.weights=prior.weights, gweight=gweight, AICc=AICc)
+    }
+
+    if (verbose) {
+            cat(paste("For i=", i, "; location=(", paste(round(loc,3), collapse=","), "); bw=", round(bw,3), "; s=", m[['s']], "; sigma2=", round(tail(m[['sigma2']],1),3), "; nonzero=", paste(m[['nonzero']], collapse=","), "; weightsum=", round(m[['weightsum']],3), ".\n", sep=''))
+    }
+    return(m)
 }
 
-<b>function hasTouch() {
-  return Modernizr.touch;
-}</b>
-
-function detectFormFactor() {
-  var device = DESKTOP;
-  if (hasTouch()) {
-    device = isSmall() ? PHONE : TABLET;
-  }
-  return device;
-}
+gwglmnet.object[['models']] = models
 </pre>
 
