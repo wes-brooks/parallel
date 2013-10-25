@@ -3,11 +3,14 @@
 % author: Wesley Brooks
 % author: somesquares.org
 % thankyou: Thanks everyone!
-% thankyou_details: And especially these people:
+<!---% thankyou_details: And especially these people:
 % contact: <span>website</span> <a href="http://somesquares.org/blog/">website</a>
 % contact: <span>github</span> <a href="http://github.com/wesesque">wesesque</a>
-% contact: <span>twitter</span> <a href="http://twitter.com/buckyphilia">@buckyphilia</a>
+% contact: <span>twitter</span> <a href="http://twitter.com/buckyphilia">@buckyphilia</a>--->
 % favicon: http://www.stat.wisc.edu/sites/all/libraries/uw_madison_omega/favicon.ico
+
+
+
 
 ---
 title: Intro slide
