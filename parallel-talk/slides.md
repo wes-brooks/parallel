@@ -14,7 +14,7 @@
 ---
 title: Parallelize your problem
 build_lists: true
-class: dark
+class: 
 
 Requirements: 
 
@@ -26,7 +26,7 @@ Requirements:
 ---
 title: Parallelize your code
 build_lists: true
-class: dark
+class: 
 
 Steps: 
 
@@ -42,7 +42,7 @@ title: Slide with a figure
 subtitle: Subtitles are cool too
 class: img-top-center
 
-<img height=150 src=figures/200px-6n-graf.svg.png />
+![test](figures/200px-6n-graf.svg.png)
 
 - Some point to make about about this figure from wikipedia
 - This slide has a class that was defined in theme/css/custom.css
@@ -56,7 +56,7 @@ class: img-top-center
 ---
 title: Segue slide
 subtitle: I can haz subtitlz?
-class: segue nobackground
+class: segue dark nobackground
 
 
 
