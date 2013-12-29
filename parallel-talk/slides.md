@@ -132,7 +132,7 @@ Condor is a distributed computing platform that was developed by the UW-Madison 
 - Sends your job to run on any idle processor within a grid
 - Center for High Throughput Computing (CHTC) manages a campus-wide grid (no R on these machines)
 - There is a combined stat/CS grid accessible via the `desk` servers (R on _some_ of these)
-
+- Test: $$e=mc^2$$
 
 ---
 title: More powerful parallelization
