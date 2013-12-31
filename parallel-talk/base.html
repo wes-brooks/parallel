@@ -22,11 +22,11 @@ URL: https://code.google.com/p/io-2012-slides
   <!--<meta name="viewport" content="initial-scale=0.4">-->
   <meta name="apple-mobile-web-app-capable" content="yes">
   {% if settings.favicon  %} <link rel="shortcut icon" href="{{- settings.favicon -}}"/> {% endif %}
-  <link rel="stylesheet" media="all" href="theme/css/default.css">
-  <link rel="stylesheet" media="all" href="theme/css/custom.css">
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/slidedeck/default.css">
+  <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/slidedeck/custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="{{ STATIC_URL }}css/slidedeck/phone.css">
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
-  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <script data-main="{{ STATIC_URL }}js/slidedeck/slides" src="{{ STATIC_URL }}js/slidedeck/require-1.0.8.min.js"></script>
 
   <!-- MathJax support -->
   <script type="text/x-mathjax-config">
